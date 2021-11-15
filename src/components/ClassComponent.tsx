@@ -74,7 +74,7 @@ localWeather = (position: any) => {
     componentDidMount() {
         // setInterval(() => {
             navigator.geolocation.getCurrentPosition(this.localWeather); 
-        // }, 15000)
+        // }, 1000)
     };
 
 
