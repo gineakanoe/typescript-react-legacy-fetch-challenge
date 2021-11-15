@@ -21,6 +21,9 @@ type GeoWeather = {
     weather: any,
     time: string,
     main: any,
+    desc: any,
+    icon: string,
+    name: string,
 }
 
 class ClassComponent extends React.Component<{}, GeoWeather> {
@@ -33,7 +36,9 @@ class ClassComponent extends React.Component<{}, GeoWeather> {
         weather: [],
         time: '',
         main: {},
-
+        desc: '',
+        icon: '',
+        name: '',
         }
     }
 
@@ -53,10 +58,18 @@ localWeather = (position: any) => {
     .then(json => {
         this.setState({
             weather: json.main.temp,
+            desc: json.weather[0].description,
+            icon: json.weather[0].icon,
+            name: json.name,
             })
+        console.log(json.weather[0].description);
+        console.log(json.weather[0].icon);
+        console.log(json);
         })
     .catch(err => console.log(err));
+    
 }
+
 
     componentDidMount() {
         // setInterval(() => {
@@ -68,7 +81,7 @@ localWeather = (position: any) => {
     render() {
         return (
             <div>
-                <FunctionalComponent lat={this.state.latitude} long={this.state.longitude} main={this.state.main} weather={this.state.weather} time={this.state.time}/>
+                <FunctionalComponent name={this.state.name} desc={this.state.desc} icon={this.state.icon} lat={this.state.latitude} long={this.state.longitude} main={this.state.main} weather={this.state.weather} time={this.state.time}/>
             </div>
         )
     }

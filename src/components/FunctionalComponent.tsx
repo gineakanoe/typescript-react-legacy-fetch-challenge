@@ -7,8 +7,10 @@ const FunctionalComponent = (props: any) => {
         <div>
             <div>
                 <h1>Current Weather</h1>
+                <h2>{props.name}</h2>
                 <h3>{Math.round(props.weather)}°</h3>
-                <img src={`http://openweathermap.org/img/w/${props.weather[0]}.png`} alt='weather icon' style={{height: '50px', width: '50px'}}/>
+                <img src={`http://openweathermap.org/img/w/${props.icon}.png`} alt='weather icon' style={{height: '100px', width: '100px'}}/>
+                <h4>{props.desc}</h4>
                 <p>{props.lat}, {props.long} <br />Last update at {props.time}</p>
             </div>
         </div>
